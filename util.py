@@ -83,7 +83,7 @@ def warp(image: torch.Tensor, flow: torch.Tensor) -> torch.Tensor:
     ], dim=3)
 
     warped = F.grid_sample(image, normalized_flow2,
-                           mode='bilinear', padding_mode='border', align_corners=False)
+                           mode='bilinear', padding_mode='zeros', align_corners=False)
     return warped.reshape(image.shape)
 
 
